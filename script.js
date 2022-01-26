@@ -10,6 +10,7 @@ const millisecondElement = document.querySelector('.milliseconds');
 const start = document.querySelector('.start');
 const pause = document.querySelector('.pause');
 const stop = document.querySelector('.stop');
+const newButton = document.querySelector('.new');
 
 //Variables
 
@@ -18,6 +19,8 @@ let minutes = 00;
 let seconds = 00;
 let milliseconds = 00;
 let interval;
+let counter = 0;
+let disabled = true;
 
 //Listeners
 
@@ -33,8 +36,24 @@ pause.addEventListener('click', () => {
 stop.addEventListener('click', () => {
   clearInterval(interval);
   clearTimer();
+  disableButton();
 })
 
+newButton.addEventListener('click', () => {
+  clearInterval(interval);
+  counter++;
+  const results = document.querySelector('.results');
+  const newResult = document.createElement('div');
+
+  newResult.classList.add('newResult__style');
+  newResult.innerText = `Your ${counter} result: ${hours}:${minutes}:${seconds}:${milliseconds}`
+  results.append(newResult);
+
+  clearTimer();
+  interval = setInterval(startTimer, 10);
+})
+
+//Functions
 
 function startTimer(){
   milliseconds++;
@@ -91,6 +110,8 @@ function startTimer(){
   if(hours > 9){
     hourElement.innerText = hours;
   }
+
+  newButton.disabled = false;
 }
 
 function clearTimer(){
@@ -103,3 +124,10 @@ function clearTimer(){
   secondElement.innerText = '00'
   millisecondElement.innerText = '00'
 }
+
+function disableButton(){
+  if(disabled){
+    newButton.disabled = true;
+  }
+}
+disableButton();
