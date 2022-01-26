@@ -62,11 +62,32 @@
   border: none;
   border-radius: 10px;
   font-size: 18px;
+  font-weight: bold;
   padding: 10px;
   width: 180px;
   transition: .3s ease-in-out;
+  cursor: pointer;
 }
 
 .start{
   color:var(--mainColor1);
+}
+
+.start:hover{
+  background-color:var(--mainColor2);
+  color:white;
+}
+
+.stop{
+  color:var(--mainColor1);
+}
+
+.stop:hover{
+  background-color:var(--mainColor2);
+  color:white;
+}
+
+.pause:hover{
+  background-color: #e03b8b;
+  color:white;
 }
