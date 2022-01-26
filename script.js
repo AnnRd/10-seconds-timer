@@ -26,6 +26,14 @@ start.addEventListener('click', () => {
   interval = setInterval(startTimer, 10);
 })
 
+pause.addEventListener('click', () => {
+  clearInterval(interval);
+})
+
+stop.addEventListener('click', () => {
+  clearInterval(interval);
+  clearTimer();
+})
 
 
 function startTimer(){
@@ -83,4 +91,15 @@ function startTimer(){
   if(hours > 9){
     hourElement.innerText = hours;
   }
+}
+
+function clearTimer(){
+  hours = 00;
+  minutes = 00;
+  seconds = 00;
+  milliseconds = 00;
+  hourElement.innerText = '00'
+  minuteElement.innerText = '00'
+  secondElement.innerText = '00'
+  millisecondElement.innerText = '00'
 }
